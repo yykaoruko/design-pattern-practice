@@ -1,0 +1,11 @@
+{
+  "name": "design-pattern-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/s-kaoruko/design-pattern-practice.git",
+  "author": "kaoruko",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.5.3"
+  }
+}
