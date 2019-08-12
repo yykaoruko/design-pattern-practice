@@ -22,7 +22,7 @@
             this.showWithAster();
         }
     }
-    const printBanner = new PrintBanner('aa');
+    const printBanner = new PrintBanner('aa'); // Print型を強調するため
     printBanner.printWeak();
     printBanner.printStrong();
 }
@@ -53,7 +53,7 @@
             this._banner.showWithAster();
         }
     }
-    const printBanner = new PrintBanner('b');
+    const printBanner = new PrintBanner('b'); // Print型を強調するため
     printBanner.printWeak();
     printBanner.printStrong();
 }

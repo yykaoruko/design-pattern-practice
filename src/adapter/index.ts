@@ -30,7 +30,7 @@
     }
   }
 
-  const printBanner = new PrintBanner('aa');
+  const printBanner: Print = new PrintBanner('aa'); // Print型を強調するため
   printBanner.printWeak();
   printBanner.printStrong();
 }
@@ -69,7 +69,7 @@
     }
   }
 
-  const printBanner = new PrintBanner('b');
+  const printBanner: Print = new PrintBanner('b'); // Print型を強調するため
   printBanner.printWeak();
   printBanner.printStrong();
 }
