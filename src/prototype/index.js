@@ -1,4 +1,19 @@
 {
+    class Product {
+        // class を作るたびに
+        // 同じ動作をする createClone を作るのは好ましくないので
+        // abscract class に定義
+        createClone() {
+            let p = null;
+            try {
+                p = Object.create(this);
+            }
+            catch (error) {
+                console.log(error);
+            }
+            return p;
+        }
+    }
     class Manager {
         constructor() {
             this._hash = {};
@@ -11,8 +26,9 @@
             return p.createClone();
         }
     }
-    class MessageBox {
+    class MessageBox extends Product {
         constructor(decochar) {
+            super();
             this._decochar = decochar;
         }
         use(s) {
@@ -39,18 +55,7 @@
             }
             process.stdout.write('\n');
         }
-        createClone() {
-            let p = null;
-            try {
-                p = Object.assign(this);
-            }
-            catch (error) {
-                console.log(error);
-            }
-            return p;
-        }
     }
-    // class UnderlinePen {}
     function main() {
         const manegar = new Manager();
         const mbox = new MessageBox('/');
@@ -58,10 +63,9 @@
         manegar.register('warning message', mbox);
         manegar.register('slash message', sbox);
         const p1 = manegar.create('warning message');
-        // p1.use('Hello!');
-        // const p2 = manegar.create('slash message');
-        // p2.use('Hello!');
-        console.log(p1 == mbox);
+        p1.use('Hello!');
+        const p2 = p1.createClone();
+        p2.use('Hello!');
     }
     main();
 }

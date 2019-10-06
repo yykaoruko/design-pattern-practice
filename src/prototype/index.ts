@@ -1,7 +1,18 @@
 {
-  interface Product {
-    use(s: string): void;
-    createClone(): Product;
+  abstract class Product {
+    abstract use(s: string): void;
+    // class を作るたびに
+    // 同じ動作をする createClone を作るのは好ましくないので
+    // abscract class に定義
+    createClone(): Product {
+      let p: Product = null;
+      try {
+        p = Object.create(this);
+      } catch (error) {
+        console.log(error);
+      }
+      return p;
+    }
   }
 
   class Manager {
@@ -16,9 +27,10 @@
     }
   }
 
-  class MessageBox implements Product {
+  class MessageBox extends Product {
     private _decochar: string;
     constructor(decochar: string) {
+      super();
       this._decochar = decochar;
     }
     public use(s: string) {
@@ -46,34 +58,21 @@
       }
       process.stdout.write('\n');
     }
-    createClone(): Product {
-      let p: Product = null;
-      try {
-        // シャローコピー
-        p = Object.assign(this);
-      } catch (error) {
-        console.log(error);
-      }
-      return p;
-    }
   }
-
-  // class UnderlinePen {}
 
   function main() {
     const manegar = new Manager();
     const mbox = new MessageBox('/');
     const sbox = new MessageBox('*');
+
     manegar.register('warning message', mbox);
     manegar.register('slash message', sbox);
 
     const p1 = manegar.create('warning message');
-    // p1.use('Hello!');
+    p1.use('Hello!');
 
-    // const p2 = manegar.create('slash message');
-    // p2.use('Hello!');
-
-    console.log(p1 === mbox);
+    const p2 = p1.createClone();
+    p2.use('Hello!');
   }
   main();
 }
