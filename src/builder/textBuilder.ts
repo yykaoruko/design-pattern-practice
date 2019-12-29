@@ -1,6 +1,6 @@
 import Builder from './builder';
 
-class TextBuilder extends Builder {
+class TextBuilder implements Builder {
   private _buffer = '';
   public makeTitle(str: string): void {
     this._buffer += '=============\n';

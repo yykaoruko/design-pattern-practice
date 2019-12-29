@@ -1,7 +1,7 @@
 import Builder from './builder';
 const fs = require('fs');
 
-class HTMLBuilder extends Builder {
+class HTMLBuilder implements Builder {
   private _filename: string;
   private _filepath: string;
   private _writer: string;
