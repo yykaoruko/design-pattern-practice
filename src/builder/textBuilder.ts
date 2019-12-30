@@ -1,23 +1,23 @@
 import Builder from './builder';
 
-class TextBuilder implements Builder {
+class TextBuilder extends Builder {
   private _buffer = '';
-  public makeTitle(str: string): void {
+  public buildTitle(str: string): void {
     this._buffer += '=============\n';
     this._buffer += `「${str}」\n`;
     this._buffer += '\n';
   }
-  public makeString(str: string): void {
+  public buildString(str: string): void {
     this._buffer += `■${str}\n`;
     this._buffer += `\n`;
   }
-  public makeItems(items: string[]): void {
+  public buildItems(items: string[]): void {
     items.forEach(item => {
       this._buffer += `  ・${item}\n`;
     })
     this._buffer += '\n';
   }
-  public close(): void {
+  public buildDone(): void {
     this._buffer += '=============\n';
   }
   public getResult(): string {
