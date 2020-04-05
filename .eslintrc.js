@@ -8,7 +8,7 @@ module.exports = {
   plugins: ["@typescript-eslint", "prettier"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    parser: "@typescript-eslint/parser",
+    sourceType: "module",
   },
   rules: {
     "@typescript-eslint/adjacent-overload-signatures": "error",
